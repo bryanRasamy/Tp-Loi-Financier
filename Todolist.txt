@@ -1,4 +1,4 @@
-Nom du site d'hebergement: infinityfree.com
+ETU004018-ETU003962
 
-MySQL DB Name 		MySQL User Name 	MySQL Password 		MySQL Host Name
-if0_39098551_TC_net	if0_39098551		(Your vPanel Password)	sql211.infinityfree.com
+MYSQL:
+	
