@@ -1,4 +1,63 @@
 ETU004018-ETU003962
 
 MYSQL:
-	
+    Tableau pour les depenses:
+        -Tableau loi_financier_type_depense(id_type_depense,type_depense);
+        -tableau loi_financier_liste_ministere(id_ministere,nom_ministere);
+        -tableau loi_financier_liste_institution(id_institution,nom_institution);
+        -Tableau loi_financier_liste_organes_constitutionnels(id_organes_constitutionnels,nom_organes_constitutionnel);
+        -Tableau loi_financier_liste_operation_dordre(id_operation_dordre,nom_operation_dordres);
+	    -Tableau loi_financier_interet_dette(id_type_depense,type_dette,montant,interet,total);
+        -Tableau loi_financier_depenses_de_solde(id_type_depense,montant_2024,montant_2025,ecart);
+        -Tableau loi_financier_budget_autorisee(id_ministere,nom_ministere,budget_autorisee);
+        -Tableau loi_financier_depenses_hors_solde(id_type_depense,categorie,montant_2024,montant_2025,ecart);
+        -Tableau loi_financier_depenses_investissement(id_type_depense,montant_2024,montant_2025);
+        -Tableau loi_financier_depense_par_ministere(id_ministere,somme_2024,somme_2025);
+        -Tableau loi_financier_depense_par_institution(id_institution,somme_2024,somme_2025);
+        -Tableau loi_financier_depense_par_organes_constitutionnels(id_organes_constitutionnels,somme_2024,somme_2025);
+        -Tableau loi_financier_depense_operation_dordre(id_operation_dordre,somme_2024,somme_2025);
+
+PAGES:
+    -modele.php:
+        -CSS;
+        -redirection vers les pages en fonction du nom de la page;
+
+    -index.php:
+        -redirection vers accueil.php;
+
+    -accueil.php:
+        -Texte de bienvenue;
+        -boutons vers recette;
+        -boutons vers depense(lien vers repartitions.php);
+
+    -repartitions.php:
+        -bouton pour la repartition par nature economique (lien vers depenseparnatureeconmique.php);
+        -bouton pour la repartition selon leur rattachement administratif(lien vers depenseparrattachementadministratif.php);
+
+    -depenseparnatureeconmique.php:
+        -tableau de la totale des depenses pur chaque type:
+            -nom de la depense;
+            -total pour 2024;
+            -Total pour 2025;
+            -Somme total(global);
+
+    -depenseparrattachementadministratif.php:
+        -Tableau des depenses pour les ministeres;
+        -Tableau des depenses pour les institutions;
+        -Tableau des depenses pour les organes_constitutionnels;
+        -Tableau des depenses pour organes_constitutionnels;
+        -Tableau des depenses pour operation d'ordre;
+
+    -interetdette.php:
+        -Tableau de l'interet des dettes;
+
+    -depensesolde.php:
+        -Tableau de depenses de solde;
+        -Tableau de budget autorisee;
+
+    -depensehorssolde.php:
+        -Tableau de depenses hors solde;
+    
+    -depenseinvestissement.php:
+        -Tableau de depenses investissement;
+    
