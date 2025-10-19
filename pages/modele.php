@@ -3,6 +3,17 @@
     session_start();
 
     $page= $_GET['page'];
+
+    if($page==1){
+        $page="interetdette";
+    }elseif($page==2){
+        $page="depensesolde";
+    }elseif($page==3){
+        $page="depensehorssolde";
+    }elseif($page==4){
+        $page="depenseinvestissement";
+    }
+
     $page_format= $page.".php";
 
 ?>
@@ -16,8 +27,39 @@
     <link href=".././assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href=".././assets/bootstrap-icons/font/bootstrap-icons.css">
 </head>
-<body>    
-    <?php include($page_format);?>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expand-lg ">
+                <div class="container-fluid">
+                    <a class="navbar-brand fw-bold" href="#">Loi Financier de Madagascar 2024-2025</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Home
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="modele.php?page=accueil">Accueil</a></li>
+                                    <li><a class="dropdown-item" href="modele.php?page=rc">Recette 2024-2025</a></li>
+                                    <li><a class="dropdown-item" href="modele.php?page=repartitions">Dépense 2024-2025</a>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <?php include($page_format);?>
+        </main>
+        <footer class="mt-5">
+            <p class="text-center">&copy; 2025 by Bryan and Hasina</p>
+        </footer>
+    </div>
     
     <script src=".././assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -2,44 +2,45 @@ ETU004018-ETU003962
 
 MYSQL:
     Tableau pour les depenses:
-        -Tableau loi_financier_type_depense(id_type_depense,type_depense);
-        -tableau loi_financier_liste_ministere(id_ministere,nom_ministere);
-        -tableau loi_financier_liste_institution(id_institution,nom_institution);
-        -Tableau loi_financier_liste_organes_constitutionnels(id_organes_constitutionnels,nom_organes_constitutionnel);
-        -Tableau loi_financier_liste_operation_dordre(id_operation_dordre,nom_operation_dordres);
-	    -Tableau loi_financier_interet_dette(id_type_depense,type_dette,montant,interet,total);
-        -Tableau loi_financier_depenses_de_solde(id_type_depense,montant_2024,montant_2025,ecart);
-        -Tableau loi_financier_budget_autorisee(id_ministere,nom_ministere,budget_autorisee);
-        -Tableau loi_financier_depenses_hors_solde(id_type_depense,categorie,montant_2024,montant_2025,ecart);
-        -Tableau loi_financier_depenses_investissement(id_type_depense,montant_2024,montant_2025);
-        -Tableau loi_financier_depense_par_ministere(id_ministere,somme_2024,somme_2025);
-        -Tableau loi_financier_depense_par_institution(id_institution,somme_2024,somme_2025);
-        -Tableau loi_financier_depense_par_organes_constitutionnels(id_organes_constitutionnels,somme_2024,somme_2025);
-        -Tableau loi_financier_depense_operation_dordre(id_operation_dordre,somme_2024,somme_2025);
+        -Tableau loi_financier_type_depense(id_type_depense,type_depense); ok
+        -tableau loi_financier_liste_ministere(id_ministere,nom_ministere); ok
+        -tableau loi_financier_liste_institution(id_institution,nom_institution); ok
+        -Tableau loi_financier_liste_organes_constitutionnels(id_organes_constitutionnels,nom_organes_constitutionnel); ok
+        -Tableau loi_financier_liste_operation_dordre(id_operation_dordre,nom_operation_dordres); ok
+	    -Tableau loi_financier_interet_dette(id_type_depense,type_dette,interet_2024,interet_2025); ok
+        -Tableau loi_financier_depenses_de_solde(id_type_depense,montant_2024,montant_2025,ecart); ok
+        -Tableau loi_financier_budget_autorisee(id_ministere,nom_ministere,budget_autorisee); ok
+        -Tableau loi_financier_depenses_hors_solde(id_type_depense,categorie,montant_2024,montant_2025,ecart); ok
+        -Tableau loi_financier_depenses_investissement(id_type_depense,montant_2024,montant_2025); ok
+        -Tableau loi_financier_depense_par_ministere(id_ministere,somme_2024,somme_2025); ok
+        -Tableau loi_financier_depense_par_institution(id_institution,somme_2024,somme_2025); ok
+        -Tableau loi_financier_depense_par_organes_constitutionnels(id_organes_constitutionnels,somme_2024,somme_2025); ok
+        -Tableau loi_financier_depense_operation_dordre(id_operation_dordre,somme_2024,somme_2025); ok
+        -Tableau loi_financier_total_depense(nom_depense,total_2024,total_2025);
 
 PAGES:
     -modele.php:
-        -CSS;
-        -redirection vers les pages en fonction du nom de la page;
+        -CSS; ok
+        -redirection vers les pages en fonction du nom de la page; ok
 
     -index.php:
-        -redirection vers accueil.php;
+        -redirection vers accueil.php; ok
 
     -accueil.php:
-        -Texte de bienvenue;
-        -boutons vers recette;
-        -boutons vers depense(lien vers repartitions.php);
+        -Texte de bienvenue; ok
+        -boutons vers recette; ok
+        -boutons vers depense(lien vers repartitions.php); ok
 
     -repartitions.php:
-        -bouton pour la repartition par nature economique (lien vers depenseparnatureeconmique.php);
-        -bouton pour la repartition selon leur rattachement administratif(lien vers depenseparrattachementadministratif.php);
+        -bouton pour la repartition par nature economique (lien vers depenseparnatureeconmique.php); ok
+        -bouton pour la repartition selon leur rattachement administratif(lien vers depenseparrattachementadministratif.php); ok
 
-    -depenseparnatureeconmique.php:
-        -tableau de la totale des depenses pur chaque type:
-            -nom de la depense;
-            -total pour 2024;
-            -Total pour 2025;
-            -Somme total(global);
+    -depenseparnatureeconomique.php:
+        -tableau de la totale des depenses pur chaque type: ok
+            -nom de la depense; ok
+            -total pour 2024; ok
+            -Total pour 2025; ok
+            -Somme total(global); ok
 
     -depenseparrattachementadministratif.php:
         -Tableau des depenses pour les ministeres;
@@ -49,7 +50,7 @@ PAGES:
         -Tableau des depenses pour operation d'ordre;
 
     -interetdette.php:
-        -Tableau de l'interet des dettes;
+        -Tableau de l'interet des dettes; ok
 
     -depensesolde.php:
         -Tableau de depenses de solde;

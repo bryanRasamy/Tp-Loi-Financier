@@ -4,7 +4,7 @@
         static $connect = null;
 
         if ($connect == null) {
-            $connect = mysqli_connect('localhost','root','','tcNet');
+            $connect = mysqli_connect('localhost','root','','loi_financier');
             // $connect = mysqli_connect('sql211.infinityfree.com','if0_39098551','2006herilalaina','if0_39098551_TC_net');
 
             if (!$connect) {
