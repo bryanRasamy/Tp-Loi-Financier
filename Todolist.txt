@@ -43,11 +43,19 @@ PAGES:
             -Somme total(global); ok
 
     -depenseparrattachementadministratif.php:
+        -Tableau des depenses par rattachement; ok
+
+    -depenseministere.php:
         -Tableau des depenses pour les ministeres;
+
+    -depenseinstitution.php:
         -Tableau des depenses pour les institutions;
+
+    -depenseorganisation.php:
         -Tableau des depenses pour les organes_constitutionnels;
-        -Tableau des depenses pour organes_constitutionnels;
-        -Tableau des depenses pour operation d'ordre;
+
+    -depensehorsoperationdordre.php:
+        -Tableau des depenses pour hors operation d'ordre;
 
     -interetdette.php:
         -Tableau de l'interet des dettes; ok

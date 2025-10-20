@@ -12,6 +12,14 @@
         $page="depensehorssolde";
     }elseif($page==4){
         $page="depenseinvestissement";
+    }elseif($page=="Ministères"){
+        $page="depenseministere";
+    }elseif($page=="Institutions"){
+        $page="depensinstitution";
+    }elseif($page=="Organes Constitutionnels"){
+        $page="depenseorganisation";
+    }elseif($page=="Hors opérations d ordre"){
+        $page="depensehorsoperationdordre";
     }
 
     $page_format= $page.".php";

@@ -9,7 +9,7 @@
             <a class="btn btn-outline-primary " href="modele.php?page=depenseparnatureeconomique">Repartition par nature economique</a>
         </article>
         <article class="row">
-            <a class="btn btn-outline-secondary mt-4" href="modele.php?page=depenseparnatureeconmique">Repartition selon leur rattachement administratif</a>
+            <a class="btn btn-outline-secondary mt-4" href="modele.php?page=depenseparrattachementadministratif">Repartition selon leur rattachement administratif</a>
         </article>
     </section>
 </div>

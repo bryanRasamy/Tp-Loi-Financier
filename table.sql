@@ -132,6 +132,36 @@ CREATE TABLE loi_financier_depense_par_ministere(
     FOREIGN KEY (id_ministere) REFERENCES loi_financier_liste_ministere(id_ministere)
 );
 
+insert into loi_financier_depense_par_ministere values
+(1,557,543.2),
+(7,99.2,104.7),
+(8,199.6,219.8),
+(9,150.2,134.7),
+(10,2848,2332.7),
+(3,228.3,229.2),
+(11,113.2,119.6),
+(12,356.8,568.1),
+(13,31.8,33.7),
+(14,19.2,43.9),
+(6,284.2,285.6),
+(15,94.4,188.8),
+(4,1532.8,1562),
+(16,63.9,216.3),
+(2,716.6,921),
+(17,38.4,32.1),
+(18,1217.3,2327.5),
+(19,18.3,18.1),
+(20,407.9,1332),
+(21,306.1,600.2),
+(22,469.8,795.5),
+(23,29.9,28.8),
+(5,103.7,94.8),
+(24,2.5,0),
+(25,8.4,8.8),
+(26,99.1,193.4),
+(27,40.5,58.1),
+(28,414.8,446.4);
+
 CREATE TABLE loi_financier_depense_par_institution(
     id_institution INT,
     somme_2024 DECIMAL(6,2),
@@ -166,5 +196,18 @@ Insert into loi_financier_total_depense values
 (3,3069,2304.3),
 (4,4520.4,8265.8);
 
+CREATE TABLE loi_financier_total_depense_rattachement(
+    nom VARCHAR(100),
+    total_2024 DECIMAL(7,2),
+    total_2025 DECIMAL(7,2)
+);
+
+insert into loi_financier_total_depense_rattachement values 
+('Ministères',10452.1,13439),
+('Institutions',943.8,969.9),
+('Organes Constitutionnels',4.2,4),
+('Hors opérations d ordre',3.7,3.5);
+
 Create view v_total_depense as SELECT tl.id_type_depense as id_type_depense, type_depense,total_2024,total_2025 FROM loi_financier_total_depense as tl join loi_financier_type_depense as td on tl.id_type_depense=td.id_type_depense;
 Create view v_budget_autorisee as SELECT lm.id_ministere as id_ministere, nom_ministere,Budget_autorisee FROM loi_financier_liste_ministere as lm join loi_financier_budget_autorisee as ba on lm.id_ministere=ba.id_ministere;
+Create view v_depense_ministere as SELECT lm.id_ministere as id_ministere, nom_ministere,somme_2024,somme_2025 FROM loi_financier_liste_ministere as lm join loi_financier_depense_par_ministere as dm on lm.id_ministere=dm.id_ministere;
