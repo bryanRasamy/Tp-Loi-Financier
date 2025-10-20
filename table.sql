@@ -18,6 +18,36 @@ CREATE TABLE loi_financier_liste_ministere(
     nom_ministere VARCHAR(100)
 );
 
+insert into loi_financier_liste_ministere(nom_ministere) values 
+('Ministère des Forces Armées'),
+('Ministère de la Santé Publique'),
+('Ministère de la Sécurité Publique'),
+('Ministère de l’Éducation Nationale'),
+('Ministère de l’Enseignement Technique et de la Formation Professionnelle'),
+('Ministère de l’Enseignement Supérieur et de le Recherche Scientifique'),
+('Ministère délégué en charge de la Gendarmerie Nationale'),
+('Ministère des Affaires Étrangères'),
+('Ministère de la Justice'),
+('Ministère de l’Intérieur'),
+('Ministère de l’Économie et des Finances'),
+('Ministère de l’Industrialisation et du Commerce'),
+('Ministère de la Décentralisation et de l’Aménagement du Territoire'),
+('Ministère du Travail, de l’Emploi et de la Fonction Publique'),
+('Ministère du Tourisme et de l’Artisanat'),
+('Ministère de l’Environnement et du Développement Durable'),
+('Ministère des Transports et de la Météorologie'),
+('Ministère de la Communication et de la Culture'),
+('Ministère des Travaux Publics'),
+('Ministère des Mines et des Ressources Strategiques'),
+('Ministère de l’Énergie et des Hydrocarbures'),
+('Ministère de l’Eau, de l’Assainissement et de l’Hygiène'),
+('Ministère de l’Agriculture et de l’Élevage'),
+('Ministère de la Pêche et de l’Économie Bleue'),
+('Ministère de l’Artisanat et des Métiers'),
+('Ministère du Développement Numérique, des Postes et des Télécommunications'),
+('Ministère de la Population et des Solidarités'),
+('Ministère de la Jeunesse et des Sports');
+
 CREATE TABLE loi_financier_liste_institution(
     id_institution INT PRIMARY KEY AUTO_INCREMENT,
     nom_institution VARCHAR(100)
@@ -51,13 +81,24 @@ CREATE TABLE loi_financier_depenses_de_solde(
     ecart DECIMAL(6,2)
 );
 
+insert into loi_financier_depenses_de_solde(montant_2024,montant_2025,ecart) values
+(3814.5,3846.4,31.9);
+
 
 CREATE TABLE loi_financier_budget_autorisee(
     id_ministere INT,
-    nom_ministere VARCHAR(100),
     Budget_autorisee INT,
     FOREIGN KEY (id_ministere) REFERENCES loi_financier_liste_ministere(id_ministere)
 );
+
+insert into loi_financier_budget_autorisee(id_ministere,Budget_autorisee) values
+(1,1000),
+(2,300),
+(3,1000),
+(4,3000),
+(5,250),
+(6,100),
+(7,1000);
 
 CREATE TABLE loi_financier_depenses_hors_solde(
     id_depense_hors_solde INT PRIMARY KEY AUTO_INCREMENT,
@@ -67,11 +108,22 @@ CREATE TABLE loi_financier_depenses_hors_solde(
     ecart DECIMAL(6,2)
 );
 
+insert into loi_financier_depenses_hors_solde(categorie,montant_2024,montant_2025,ecart) values
+('Indemnités',244.8,244.8,0),
+('Bien et Services',573.2,504.7,68.5),
+('Transferts',2251,1554.8,696.2);
+
 CREATE TABLE loi_financier_depenses_investissement(
     id_depense_investissement INT PRIMARY KEY AUTO_INCREMENT,
-    montant_2024 DECIMAL(6,2),
-    montant_2025 DECIMAL(6,2)
+    annee INT,
+    pip_interne DECIMAL(6,2),
+    pip_externe DECIMAL(6,2),
+    total DECIMAL(6,2)
 );
+
+insert into loi_financier_depenses_investissement(annee,pip_interne,pip_externe,total) values
+(2024,1254.8,3265.6,4520.4),
+(2025,2368.4,5897.4,8265.8);
 
 CREATE TABLE loi_financier_depense_par_ministere(
     id_ministere INT,
@@ -115,3 +167,4 @@ Insert into loi_financier_total_depense values
 (4,4520.4,8265.8);
 
 Create view v_total_depense as SELECT tl.id_type_depense as id_type_depense, type_depense,total_2024,total_2025 FROM loi_financier_total_depense as tl join loi_financier_type_depense as td on tl.id_type_depense=td.id_type_depense;
+Create view v_budget_autorisee as SELECT lm.id_ministere as id_ministere, nom_ministere,Budget_autorisee FROM loi_financier_liste_ministere as lm join loi_financier_budget_autorisee as ba on lm.id_ministere=ba.id_ministere;

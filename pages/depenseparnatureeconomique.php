@@ -20,7 +20,7 @@
             
             <?php foreach ($total as $tl) {?>
                 <tr>
-                    <td><a href="modele.php?page=<?php echo $tl['id_type_depense'];?>" class="lien"><?php echo $tl['type_depense'];?></a></td>
+                    <td><a href="modele.php?page=<?php echo $tl['id_type_depense'];?>&titre=<?php echo $tl['type_depense'];?>" class="lien"><?php echo $tl['type_depense'];?></a></td>
                     <td><?php echo $tl['total_2024'];?> md Ar</td>
                     <td><?php echo $tl['total_2025'];?> md Ar</td>
                 </tr>

@@ -4,13 +4,13 @@
 
 <div class="row">
     <section class="row mt-4">
-        <h2 class="text-center">Interet des dettes</h2>
+        <h2 class="text-center"><?php echo $_GET['titre'];?></h2>
     </section>
     <section class="row mt-4">
-        <h3>Dans cette section, vous pouvez voir le montant des dettes de Madagascar en 2024 et 2025 avec les interets</h3>
+        <h3 class="text-center">Dans cette section, vous pouvez voir le montant des dettes de Madagascar en 2024 et 2025 avec les interets</h3>
     </section>
     <section class="row mt-4">
-        <table class="table table-info table-striped">
+        <table class="table table-light table-striped">
             <tr>
                 <th>Type de dette</th>
                 <?php foreach ($dette as $dt) {?>

@@ -53,12 +53,12 @@ PAGES:
         -Tableau de l'interet des dettes; ok
 
     -depensesolde.php:
-        -Tableau de depenses de solde;
-        -Tableau de budget autorisee;
+        -Tableau de depenses de solde; ok
+        -Tableau de budget autorisee; ok
 
     -depensehorssolde.php:
-        -Tableau de depenses hors solde;
+        -Tableau de depenses hors solde; ok
     
     -depenseinvestissement.php:
-        -Tableau de depenses investissement;
+        -Tableau de depenses investissement; ok
     
