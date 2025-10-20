@@ -53,15 +53,33 @@ CREATE TABLE loi_financier_liste_institution(
     nom_institution VARCHAR(100)
 );
 
+insert into loi_financier_liste_institution(nom_institution) values 
+('Présidence de la République'),
+('Sénat'),
+('Assemblée Nationale'),
+('Haute Cour Constitutionnelle'),
+('Primature'),
+('Conseil du Fampihavanana Malagasy'),
+('Commission Électorale Nationale Indépendante'),
+('Secretariat d’État en charge des Nouvelles Villes et de l’Habitat'),
+('Secrétariat d’État en charge de la Souveraineté Alimentaire');
+
 CREATE TABLE loi_financier_liste_organes_constitutionnels(
     id_organes_constitutionnels INT PRIMARY KEY AUTO_INCREMENT,
-    nnom_organes_constitutionnel VARCHAR(100)
+    nom_organes_constitutionnel VARCHAR(100)
 );
 
-CREATE TABLE loi_financier_liste_operation_dordre(
-    id_operation_dordre INT PRIMARY KEY AUTO_INCREMENT,
+insert into loi_financier_liste_organes_constitutionnels(nom_organes_constitutionnel) values
+('Haut Conseil pour la Défense de la Démocratie et de l’État de Droit (HCDDED)'),
+('Commission Nationale Indépendante des Droits de l’Homme (CNIDH)');
+
+CREATE TABLE loi_financier_liste_hors_operation_dordre(
+    id_hors_operation_dordre INT PRIMARY KEY AUTO_INCREMENT,
     nom_operation_dordres VARCHAR(100)
 );
+
+insert into loi_financier_liste_hors_operation_dordre(nom_operation_dordres) values 
+('Haute Cour de Justice');
 
 CREATE TABLE loi_financier_interet_dette(
     id_interet INT PRIMARY KEY AUTO_INCREMENT,
@@ -169,6 +187,17 @@ CREATE TABLE loi_financier_depense_par_institution(
     FOREIGN KEY (id_institution) REFERENCES loi_financier_liste_institution(id_institution)
 );
 
+insert into loi_financier_depense_par_institution values 
+(1,177.1,224.7),
+(2,22.1,21.3),
+(3,87.4,85.9),
+(4,11.9,9.3),
+(5,278.3,339.9),
+(6,6.7,6.3),
+(7,113.3,16.4),
+(8,247.1,138.8),
+(9,0,127.3);
+
 CREATE TABLE loi_financier_depense_par_organes_constitutionnels(
     id_organes_constitutionnels INT,
     somme_2024 DECIMAL(6,2),
@@ -176,12 +205,19 @@ CREATE TABLE loi_financier_depense_par_organes_constitutionnels(
     FOREIGN KEY (id_organes_constitutionnels) REFERENCES loi_financier_liste_organes_constitutionnels(id_organes_constitutionnels)
 );
 
-CREATE TABLE loi_financier_depense_operation_dordre(
-    id_operation_dordre INT,
+insert into loi_financier_depense_par_organes_constitutionnels values 
+(1,2.1,2),
+(2,2.1,2);
+
+CREATE TABLE loi_financier_depense_hors_operation_dordre(
+    id_hors_operation_dordre INT,
     somme_2024 DECIMAL(6,2),
     somme_2025 DECIMAL(6,2),
-    FOREIGN KEY (id_operation_dordre) REFERENCES loi_financier_liste_operation_dordre(id_operation_dordre)
+    FOREIGN KEY (id_hors_operation_dordre) REFERENCES loi_financier_liste_hors_operation_dordre(id_hors_operation_dordre)
 );
+
+insert into loi_financier_depense_hors_operation_dordre values 
+(1,3.7,3.5);
 
 CREATE TABLE loi_financier_total_depense(
     id_type_depense INT,
@@ -211,3 +247,6 @@ insert into loi_financier_total_depense_rattachement values
 Create view v_total_depense as SELECT tl.id_type_depense as id_type_depense, type_depense,total_2024,total_2025 FROM loi_financier_total_depense as tl join loi_financier_type_depense as td on tl.id_type_depense=td.id_type_depense;
 Create view v_budget_autorisee as SELECT lm.id_ministere as id_ministere, nom_ministere,Budget_autorisee FROM loi_financier_liste_ministere as lm join loi_financier_budget_autorisee as ba on lm.id_ministere=ba.id_ministere;
 Create view v_depense_ministere as SELECT lm.id_ministere as id_ministere, nom_ministere,somme_2024,somme_2025 FROM loi_financier_liste_ministere as lm join loi_financier_depense_par_ministere as dm on lm.id_ministere=dm.id_ministere;
+Create view v_depense_institution as SELECT li.id_institution as id_institution, nom_institution,somme_2024,somme_2025 FROM loi_financier_liste_institution as li join loi_financier_depense_par_institution as di on li.id_institution=di.id_institution;
+Create view v_depense_organisation as SELECT lo.id_organes_constitutionnels as id_organes_constitutionnels, nom_organes_constitutionnel,somme_2024,somme_2025 FROM loi_financier_depense_par_organes_constitutionnels as do join loi_financier_liste_organes_constitutionnels as lo on lo.id_organes_constitutionnels=do.id_organes_constitutionnels;
+Create view v_depense_horsoperation as SELECT lh.id_hors_operation_dordre as id_hors_operation_dordre, nom_operation_dordres,somme_2024,somme_2025 FROM loi_financier_liste_hors_operation_dordre as lh join loi_financier_depense_hors_operation_dordre as dh on lh.id_hors_operation_dordre=dh.id_hors_operation_dordre;

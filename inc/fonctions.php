@@ -145,4 +145,70 @@
             
         return $donnee;
     }
+
+     function get_all_depense_institution(){
+        $sql= "SELECT * FROM v_depense_institution";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+
+        return $demande;
+    }
+
+    function get_total_depense_institution(){
+        $sql="SELECT SUM(somme_2024) as total_2024, SUM(somme_2025) as total_2025 FROM v_depense_institution";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
+
+    function get_all_depense_organisation(){
+        $sql= "SELECT * FROM v_depense_organisation";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+
+        return $demande;
+    }
+
+    function get_total_depense_organisation(){
+        $sql="SELECT SUM(somme_2024) as total_2024, SUM(somme_2025) as total_2025 FROM v_depense_organisation";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
+
+    function get_all_depense_horsoperation(){
+        $sql= "SELECT * FROM v_depense_horsoperation";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+
+        return $demande;
+    }
+
+    function get_total_depense_horsoperation(){
+        $sql="SELECT SUM(somme_2024) as total_2024, SUM(somme_2025) as total_2025 FROM v_depense_horsoperation";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
 ?>
