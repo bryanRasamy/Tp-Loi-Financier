@@ -5,7 +5,7 @@
 
 <div class="row">
     <section class="row mt-4">
-        <h2 class="text-center">Depenses hors operation d'ordre</h2>
+        <h2 style="color:brown" class="text-center">Depenses hors operation d'ordre</h2>
     </section>
 
     <section class="row mt-4">

@@ -4,7 +4,7 @@
 ?>
 <div class="row">
     <section class="row mt-4">
-        <h2 class="text-center">Repartition par nature economique</h2>
+        <h2 style="color:brown" class="text-center">Repartition par nature economique</h2>
     </section>
     <section class="row mt-4">
         <h3>Dans cette section, vous pouvez voir le montant total de chaque depense pour 2024 et 2025.</h3>

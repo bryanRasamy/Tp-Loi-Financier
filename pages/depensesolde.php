@@ -6,7 +6,7 @@
 
 <div class="row">
     <section class="row mt-4">
-        <h2 class="text-center"><?php echo $_GET['titre'];?></h2>
+        <h2 style="color:brown" class="text-center"><?php echo $_GET['titre'];?></h2>
     </section>
     <section class="row mt-4">
         <h3 class="text-center">Dans cette section, vous pouvez voir les depenses courantes de solde de Madagascar pour l'annee 2024 et 2025</h3>

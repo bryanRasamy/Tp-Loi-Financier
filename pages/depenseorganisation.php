@@ -5,7 +5,7 @@
 
 <div class="row">
     <section class="row mt-4">
-        <h2 class="text-center">Depenses des organes Constitutionnels</h2>
+        <h2 style="color:brown" class="text-center">Depenses des organes Constitutionnels</h2>
     </section>
 
     <section class="row mt-4">

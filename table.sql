@@ -250,3 +250,106 @@ Create view v_depense_ministere as SELECT lm.id_ministere as id_ministere, nom_m
 Create view v_depense_institution as SELECT li.id_institution as id_institution, nom_institution,somme_2024,somme_2025 FROM loi_financier_liste_institution as li join loi_financier_depense_par_institution as di on li.id_institution=di.id_institution;
 Create view v_depense_organisation as SELECT lo.id_organes_constitutionnels as id_organes_constitutionnels, nom_organes_constitutionnel,somme_2024,somme_2025 FROM loi_financier_depense_par_organes_constitutionnels as do join loi_financier_liste_organes_constitutionnels as lo on lo.id_organes_constitutionnels=do.id_organes_constitutionnels;
 Create view v_depense_horsoperation as SELECT lh.id_hors_operation_dordre as id_hors_operation_dordre, nom_operation_dordres,somme_2024,somme_2025 FROM loi_financier_liste_hors_operation_dordre as lh join loi_financier_depense_hors_operation_dordre as dh on lh.id_hors_operation_dordre=dh.id_hors_operation_dordre;
+
+create table loi_financier_recette_source(
+    annee INT,
+    impots DECIMAL(6,2),
+    douanes DECIMAL(6,2),
+    recette_non_fiscale DECIMAL,
+    dons DECIMAL
+);
+insert into loi_financier_recette_source(annee, impots, douanes, recette_non_fiscale, dons) values
+(2024,5628.4, 4366, 265, 2476.6  ),
+(2025, 4636.5, 3768, 145.4 , 1086.3 );
+
+create table loi_financier_recette_fiscale(
+    nature_impots text,
+    LFR2024 DECIMAL(6,2),
+    LF2025 DECIMAL(6,2)
+);
+
+insert into loi_financier_recette_fiscale values
+( 'impot sur les revenus' , 1179 ,1411.4  ),
+('impot sur les revenus Salariaux et Assimiles' , 848.2 , 889.9 ),
+( 'impot sur les revenus des Capitaux Mobiliers', 78.2 , 93.7 ),
+( 'impot sur les plus-values immobiliaires', 14 , 18.3 ),
+('impot Synthetique' ,  132.3, 164.7 ),
+( 'Droit d Enregistrement ', 49 ,  62.8),
+( 'Taxe sur la Valeur Ajoutee (y compris Taxe sur les transcriptions Mobiles)', 1400.2 , 1742.2 ),
+( 'Impôt sur les marchés Publics', 148.7 , 250 ),
+( 'Droit d’Accise (y compris Taxe environnementale)', 754.1 ,  955.4),
+( 'Taxes sur les Assurances',17.2  , 20.6 ),
+( 'Droit de Timbres' , 14.1 , 16.8 ),
+( 'Autres', 1.5 , 2.7  );
+
+create or replace view v_deprecfis as SELECT SUM(LFR2024) as st24, SUM(LF2025) as st25 FROM loi_financier_recette_fiscale;
+
+CREATE TABLE loi_financier_recette_douaniere(
+    nature_droit_taxe text,
+    LFR2024 DECIMAL(6,2),
+    LF2025 DECIMAL(6,2)
+);
+
+insert into loi_financier_recette_douaniere values
+('Droit de douane', 847.5, 1010.7),
+( 'TVA à l’importation' , 1768.3 , 2148.3 ),
+( 'Taxe sur les produits pétroliers' , 308 , 326 ),
+( 'TVA sur les produits pétroliers' , 842.8 ,  879),
+( 'Droit de navigation' , 1.2 ,  1.9),
+( 'Autres' , 0.2 , 0.1 );
+
+create or replace view v_deprecdouane as SELECT SUM(LFR2024) as st24, SUM(LF2025) as st25 FROM loi_financier_recette_douaniere;
+
+CREATE TABLE loi_financier_recfisdou(
+    annee INT,
+    impots DECIMAL(6,2),
+    douanes DECIMAL(6,2)
+);
+
+insert into loi_financier_recfisdou values
+( 2024  , 4636.5  ,  3768 ),
+( 2025  , 5628.4  , 4366  );
+
+CREATE TABLE loi_financier_recette_nonfiscale(
+    necettenonfiscale text,
+    LFR2024 DECIMAL(6,2),
+    LF2025 DECIMAL(6,2)
+);
+
+insert into loi_financier_recette_nonfiscale values
+( 'Dividendes' , 89.5  , 120.2 ),
+( 'Productions immobilières financières' , 0.5  , 2.1 ),
+( 'Redevance de pêche' , 10  , 15 ),
+( 'Redevance minières' , 84.9  , 331.2 ),
+( 'Autres redevance' , 9.7  , 10 ),
+( 'Produits des activités et autres' , 11.1  , 8.1 ),
+( 'Autres' , 140.1  , 5.2 );
+
+create or replace view v_totalrecnonfis as SELECT SUM(LFR2024) as st24, SUM(LF2025) as st25 FROM loi_financier_recette_nonfiscale;
+
+create TABLE loi_financier_recette_dons(
+    dons text,
+    LFR2024 DECIMAL(6,2),
+    LF2025 DECIMAL(6,2)
+);
+insert into loi_financier_recette_dons values
+( 'courants' , 0.3 , 31 ),
+( 'Capital' , 1096 , 2445.6 );
+
+create or replace view v_totalrecdons as SELECT SUM(LFR2024) as st24, SUM(LF2025) as st25 FROM loi_financier_recette_dons;
+
+create or replace view v_totalrecsource as SELECT SUM(2024a) as st24, SUM(2025a) as st25 FROM loi_financier_recette_sources;
+
+create table loi_financier_totalrecette(
+    recette text,
+    a2024 DECIMAL(8,2),
+    a2025 DECIMAL(8,2)
+);
+
+insert into loi_financier_totalrecette values
+('Recettes fiscales interieures'   , 4635.5  , 5628.5),
+( 'Recettes douanieres'  ,  3768 , 4366 ),
+( 'Recettes non fiscales'  ,  345.8 , 491.8  ),
+( 'Dons'  , 1096.3  , 2476.6 );
+
+create or replace view v_totaltoutrecette as SELECT SUM(a2024) as st24, SUM(a2025) as st25 FROM loi_financier_totalrecette;

@@ -7,7 +7,7 @@
         <h2 class="text-center"><?php echo $_GET['titre'];?></h2>
     </section>
     <section class="row mt-4">
-        <h3 class="text-center">Dans cette section, vous pouvez voir les depenses d'investissement de Madagascar pour l'annee 2024 et 2025</h3>
+        <h3 style="color:brown" class="text-center">Dans cette section, vous pouvez voir les depenses d'investissement de Madagascar pour l'annee 2024 et 2025</h3>
     </section>
     <section class="row mt-4">
         <table class="table table-light table-striped">

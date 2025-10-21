@@ -211,4 +211,144 @@
             
         return $donnee;
     }
+
+    function get_all_recette_sources(){
+        $sql= "SELECT * FROM  loi_financier_recette_sources";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+        return $demande;
+    }
+
+    function get_somme_recette_sources(){
+        $sql="SELECT * FROM v_totalrecsource";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
+
+    function get_all_recette_fiscale(){
+        $sql= "SELECT * FROM  loi_financier_recette_fiscale";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+        return $demande;
+    }
+
+    function get_somme_recette_fiscale(){
+        $sql="SELECT * FROM v_deprecfis";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
+
+    function get_all_recette_douaniere(){
+        $sql= "SELECT * FROM  loi_financier_recette_douaniere";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+        return $demande;
+    }
+
+    function get_somme_recette_douaniere(){
+        $sql="SELECT * FROM v_deprecdouane";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
+
+    function get_all_recette_fisdou(){
+        $sql= "SELECT * FROM  loi_financier_recfisdou";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+        return $demande;
+    }
+
+    function get_all_recette_nonfiscale(){
+        $sql= "SELECT * FROM  loi_financier_recette_nonfiscale";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+        return $demande;
+    }
+
+    function get_somme_recette_nonfiscale(){
+        $sql="SELECT * FROM v_totalrecnonfis";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
+
+
+    function get_all_recette_dons(){
+        $sql= "SELECT * FROM  loi_financier_recette_dons";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+        return $demande;
+    }
+
+    function get_somme_recette_dons(){
+        $sql="SELECT * FROM v_totalrecdons";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
+
+
+    function get_all_recette_accueil(){
+        $sql= "SELECT * FROM  loi_financier_totalrecette";
+     
+        $result= mysqli_query(dbconnect(),$sql);
+        $demande=array();
+        
+        while($donnee=mysqli_fetch_assoc($result)){
+            $demande[]=$donnee;
+        }
+        return $demande;
+    }
+
+    function get_somme_recette_accueil(){
+        $sql="SELECT * FROM v_totaltoutrecette";
+        $resultat=mysqli_query(dbconnect(),$sql);
+        
+        $donnee=mysqli_fetch_assoc($resultat);
+            
+        return $donnee;
+    }
 ?>

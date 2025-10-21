@@ -70,3 +70,22 @@ PAGES:
     -depenseinvestissement.php:
         -Tableau de depenses investissement; ok
     
+
+creation de page recette.php ; OKK
+
+recettesource.php ( page afffichant la recette par source) ok
+table:
+    -annee ok
+    -impots ok
+    -douanes ok
+    -recette non fiscale ok
+    - dons ok
+
+recettedouanes.php  ok
+table ;
+    nature impots ok
+    lfr 2024 ok
+    lfr 2025 ok
+
+recettedouanieres.php 
+table ok
